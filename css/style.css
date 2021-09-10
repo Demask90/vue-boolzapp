@@ -6,17 +6,8 @@
 
 /* COMMON\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-.active {
-    text-decoration: none;
-    color: grey;
-}
-
 .float-lt {
     float: left;
-}
-
-.float-rt {
-    float: right;
 }
 
 .flex {
@@ -27,12 +18,6 @@
 .flex-col {
     display: flex;
     flex-direction: column;
-}
-
-.flex-rev{
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
 }
 
 .wrap {
