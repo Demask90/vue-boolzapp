@@ -4,6 +4,75 @@
     box-sizing: border-box;
 }
 
+/* COMMON\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+.active {
+    text-decoration: none;
+    color: grey;
+}
+
+.float-lt {
+    float: left;
+}
+
+.float-rt {
+    float: right;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-rev{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.middle {
+    align-items:center;
+}
+
+.start {
+    justify-content: flex-start;
+}
+
+.center {
+    justify-content: center;
+}
+
+.end {
+    justify-content: flex-end;
+}
+
+.top {
+    align-items:flex-start;
+}
+
+.bottom {
+    align-items:flex-end;
+}
+
+.around {
+    justify-content: space-around;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+/* COMMON\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
 body {
     font-family: 'Lato', sans-serif;
 }
@@ -34,66 +103,141 @@ body {
 }
 
 #info_float {
-    float: left;
     width: 40%;
     height: 100%;
-    background-color: green;
+    background-color: #F6F6F6;
 }
 
 #info_float #info_user {
     width: 100%;
     height: 60px;
-    background-color: red;
+    background-color: #EDEDED;
+    border-right: 1px solid #E5E5E6;
+}
+
+#info_float #info_user #user_logo,
+#chat_float #info_chat #contact_logo {
+    height: 100%;
+}
+
+#info_float #info_user #option_user,
+#chat_float #info_chat #option_chat{
+    height: 100%;
+    margin-right: 15px;
 }
 
 #info_float #notifications {
     width: 100%;
-    height: 70px;
-    background-color: blue;
+    height: 80px;
+    background-color: #9DE1FE;
 }
 
-#info_float input{
-    display: flex;
-    width: 95%;
+#info_float #notifications #circle_notification {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    margin: 10px 10px 10px 20px;
+    color: #9DE1FE;
+    background-color: white;
+}
+
+#info_float #notifications #circle_notification i {
+    font-size: 1.2em;
+}
+
+#info_float #notifications #notification_text a{
+    color: grey;
+    font-size: 0.9em;
+}
+
+#info_float #search_input {
+    width: 100%;
+    height: 50px;
     padding: 5px;
-    margin: 5px auto;
-    border-radius: 20px;
+}
+
+#info_float #search_input button {
+    padding: 10px 20px;
+    border: 1px solid #e5e5e6;
+    background-color: #FFFFFF;
+    border-radius: 5px 0 0 5px;
+    color: grey;
+}
+
+#info_float #search_input input{
+    width: 90%;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #E5E5E6;
 }
 
 #info_float #name_contacts {
     width: 100%;
-    height: calc(100% - 170px);
-    background-color:cornflowerblue;
+    height: calc(100% - 180px);
+    background-color: #FFFFFF;
+    overflow-y: scroll;
+}
+
+#info_float #name_contacts ul li {
+    list-style: none;
 }
 
 #chat_float {
+    width: 60%;
     height: 100%;
-    background-color: rebeccapurple;
 }
 
-#chat_float #info_contact {
+#chat_float #info_chat {
     width: 100%;
     height: 60px;
-    background-color: yellow;
+    background-color: #EDEDED;
 }
 
 #chat_float #chat_window {
     width: 100%;
-    height: calc(100% - 130px);
-    background-color: yellowgreen;
+    height: calc(100% - 110px);
+    background-image: url("../img/background_chat.png");
+    background-position: top;
+    background-repeat: repeat-y;
+    background-size: cover;
+    overflow-y: scroll;
 }
 
 #chat_float #input_user_chat {
     width: 100%;
-    height: 7s0px;
-    background-color: teal;
+    height: 60px;
+    background-color: #F0F0F0;
+    border: 1px solid #E5E5E6;
+}
 
+#chat_float #input_user_chat #emojy,
+#chat_float #input_user_chat #vocal_chat {
+    width: 10%;
+}
+
+#chat_float #input_user_chat #emojy button,
+#chat_float #input_user_chat #vocal_chat button,
+#info_float #info_user #option_user button,
+#chat_float #info_chat #option_chat button{
+    font-size: 1.2em;
+    border: none;
+    background-color: #F0F0F0;
+    color: rgb(187, 182, 182);
+    margin: 7px;
+    padding: 5px;
+}
+
+#chat_float #input_user_chat #emojy button,
+#chat_float #input_user_chat #vocal_chat button{
+    font-size: 1.5em;
+    color: rgb(150, 146, 146);
 }
 
 #chat_float #input_user_chat input {
-    display: flex;
-    width: 50%;
-    padding: 15px;
-    margin: 10px auto;
+    width: 80%;
+    height: 70%;
+    padding: 5px;
     border-radius: 5px;
+    font-size: 15px;
+    border: none
 }

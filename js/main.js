@@ -6,11 +6,11 @@
 // Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare
 // nome e immagine di ogni contatto
 
-// Vue.config.devtools = true;
+Vue.config.devtools = true;
 
-// var app = new Vue (
-//     {
-//         el: "#root",
-//     }
-// );
+var app = new Vue (
+    {
+        el: "#root",
+    }
+);
 

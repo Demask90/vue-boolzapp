@@ -6,31 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
     <title>BoolZapp</title>
 </head>
 <body>
     <div id="root" class="container">
+
         <div id="background_app">
 
-            <div id="banner_top">
-            </div>
+            <div id="banner_top"></div>
 
         </div>
+
         <div id="window_app">
 
-            <div id="info_float">
+            <div id="info_float" class="float-lt">
 
-                <div id="info_user"></div>
-    
-                <div id="notifications"></div>
-    
-                <div>
-                    <input type="text" v-model>
+                <div id="info_user" class="flex between">
+
+                    <div id="user_logo"></div>
+
+                    <form id="option_user" class="flex middle around">
+                        <button><i class="fas fa-circle-notch"></i></button>
+                        <button><i class="fas fa-comment-alt"></i></button>
+                        <button><i class="fas fa-ellipsis-v"></i></button>
+                    </form>
+
                 </div>
     
+                <div id="notifications" class="flex middle">
+                    <div id="circle_notification" class="flex middle center">
+                        <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <div id="notification_text">
+                        <div>
+                            Ricevi notifiche di nuovi messaggi
+                        </div>
+                        <a href="https://faq.whatsapp.com/android/chats/how-to-manage-your-notifications/?lang=it">Attiva notifiche desktop</a>
+                    </div>
+                    
+                </div>
+
+                <form id="search_input" class="flex center middle">
+                    <button><i class="fas fa-search"></i></button>
+                    <input type="search" placeholder="Cerca o inizia una nuova chat" >
+                </form>  
+                
                 <div id="name_contacts">
                     <ul>
                         <li></li>
@@ -39,26 +62,43 @@
 
             </div>
 
-            <div id="chat_float">
+            <div id="chat_float" class="float-lt">
 
-                <div id="info_contact"></div>
+                <div id="info_chat" class="flex between">
+
+                    <div id="contact_logo"></div>
+
+                    <form id="option_chat" class="flex middle around">
+                        <button><i class="fas fa-search"></i></button>
+                        <button><i class="fas fa-paperclip"></i></button>
+                        <button><i class="fas fa-ellipsis-v"></i></button>
+                    </form>
+
+                </div>
 
                 <div id="chat_window"></div>
 
-                <div id="input_user_chat">
-                    <div id="list_emojy"></div>
-                    <input type="text">
-                    <div id="vocal_chat"></div>
+                <div id="input_user_chat" class="flex around middle">
+
+                    <form id="emojy" class="flex center">
+                        <button><i class="far fa-smile"></i></button>
+                    </form>
+
+                    <input type="text" placeholder="Scrivi un messaggio">
+
+                    <form id="vocal_chat" class="flex center"s>
+                        <button><i class="fas fa-microphone"></i></i></button>
+                    </form>
+
                 </div>
 
             </div>
 
         </div>
 
-
-
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
