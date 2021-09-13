@@ -15,96 +15,117 @@
     <div id="root" class="container">
 
         <div id="background_app">
+            <div id="window_app">
 
-            <div id="banner_top"></div>
-
-        </div>
-
-        <div id="window_app">
-
-            <div id="info_float" class="float-lt">
-
-                <div id="info_user" class="flex between">
-
-                    <div id="user_logo"></div>
-
-                    <form id="option_user" class="flex middle around">
-                        <button><i class="fas fa-circle-notch"></i></button>
-                        <button><i class="fas fa-comment-alt"></i></button>
-                        <button><i class="fas fa-ellipsis-v"></i></button>
-                    </form>
-
+                <div id="info_float" class="float">
+    
+                    <div id="info_user" class="flex between">
+    
+                        <div id="user_avatar" class="flex middle">
+                            <img :src="'img/avatar' + user.userAvatar + '.jpg'" alt="avatar User">
+                            <div>{{user.name}} {{user.surname}}</div>
+                        </div>
+    
+                        <form id="option_user" class="flex middle around">
+                            <button><i class="fas fa-circle-notch"></i></button>
+                            <button><i class="fas fa-comment-alt"></i></button>
+                            <button><i class="fas fa-ellipsis-v"></i></button>
+                        </form>
+    
+                    </div>
+        
+                    <div id="notifications" class="flex middle">
+    
+                        <div id="circle_notification" class="flex middle center">
+                            <i class="fas fa-bell-slash"></i>
+                        </div>
+    
+                        <div id="notification_text">
+    
+                            <div>
+                                Ricevi notifiche di nuovi messaggi
+                            </div>
+    
+                            <a href="https://faq.whatsapp.com/android/chats/how-to-manage-your-notifications/?lang=it">Attiva notifiche desktop</a>
+                        
+                        </div>
+                        
+                    </div>
+    
+                    <form id="search_input" class="flex center middle">
+                        <button><i class="fas fa-search"></i></button>
+                        <input type="search" placeholder="Cerca o inizia una nuova chat" >
+                    </form>  
+                    
+                    <div id="info_contacts">
+                        <ul class="none"> 
+                            <li class="list_contact flex middle" :class="(i == currentContact) ? 'active' : null " v-for= '(contact, i) in contacts' @click='selected(i)'>
+                                <div class="avatar_image">
+                                    <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="avatar contact">
+                                </div>
+                                {{contact.name}}
+                            </li>
+                        </ul>
+                    </div>
+    
                 </div>
     
-                <div id="notifications" class="flex middle">
-
-                    <div id="circle_notification" class="flex middle center">
-                        <i class="fas fa-bell-slash"></i>
-                    </div>
-
-                    <div id="notification_text">
-
-                        <div>
-                            Ricevi notifiche di nuovi messaggi
+                <div id="chat_float" class="float">
+    
+                    <div id="info_chat" class="flex between middle">
+    
+                        <div id="contact_avatar_current" class="flex middle">
+                            <div class="avatar_image">
+                                <img :src="'img/avatar' + selectedAvatar + '.jpg'" alt="avatar contact current">
+                            </div>
+                            <p class="user-name">{{ selectedContact }}</p>
                         </div>
-
-                        <a href="https://faq.whatsapp.com/android/chats/how-to-manage-your-notifications/?lang=it">Attiva notifiche desktop</a>
-                    
+                        
+    
+                        <form id="option_chat" class="flex middle around">
+                            <button><i class="fas fa-search"></i></button>
+                            <button><i class="fas fa-paperclip"></i></button>
+                            <button><i class="fas fa-ellipsis-v"></i></button>
+                        </form>
+    
                     </div>
-                    
+    
+                    <div id="chat_window">
+                        <ul class="flex-col none">
+                            <li id="boxMessage" :class="(message.status == 'sent') ? 'messageSent' : 'messageRecieved'" v-for='message in contacts[currentContact].messages'>
+                                {{ message.message }}
+                                <div id="dateMessage"></div>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div id="input_user_chat" class="flex around middle">
+    
+                        <form id="emojy" class="flex center">
+                            <button><i class="far fa-smile"></i></button>
+                        </form>
+    
+                        <input type="text" placeholder="Scrivi un messaggio">
+    
+                        <form id="vocal_chat" class="flex center">
+                            <button><i class="fas fa-microphone"></i></i></button>
+                        </form>
+    
+                    </div>
+    
                 </div>
-
-                <form id="search_input" class="flex center middle">
-                    <button><i class="fas fa-search"></i></button>
-                    <input type="search" placeholder="Cerca o inizia una nuova chat" >
-                </form>  
-                
-                <div id="name_contacts">
-                    <ul>
-                        <li></li>
-                    </ul>
-                </div>
-
+    
             </div>
-
-            <div id="chat_float" class="float-lt">
-
-                <div id="info_chat" class="flex between">
-
-                    <div id="contact_logo"></div>
-
-                    <form id="option_chat" class="flex middle around">
-                        <button><i class="fas fa-search"></i></button>
-                        <button><i class="fas fa-paperclip"></i></button>
-                        <button><i class="fas fa-ellipsis-v"></i></button>
-                    </form>
-
-                </div>
-
-                <div id="chat_window"></div>
-
-                <div id="input_user_chat" class="flex around middle">
-
-                    <form id="emojy" class="flex center">
-                        <button><i class="far fa-smile"></i></button>
-                    </form>
-
-                    <input type="text" placeholder="Scrivi un messaggio">
-
-                    <form id="vocal_chat" class="flex center"s>
-                        <button><i class="fas fa-microphone"></i></i></button>
-                    </form>
-
-                </div>
-
-            </div>
-
+    
+        </div>
         </div>
 
-    </div>
+        
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="./js/main.js"></script>
-    
+
 </body>
 </html>
+
+:class="messages[i].status == sent ? 'messageSent' : 'messageRecieved'"
