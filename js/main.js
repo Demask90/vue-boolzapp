@@ -108,9 +108,6 @@ const app = new Vue ({
             this.selectedAvatar = this.contacts[i].avatar;
             this.currentContact = i;
         },
-        getStatus(i, currentContact) {
-            this.contacts[currentContact].messages[i].status = getStatus;
-        }
     }
 
 });
