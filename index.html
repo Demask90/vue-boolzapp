@@ -55,12 +55,12 @@
     
                     <form id="search_input" class="flex center middle">
                         <button><i class="fas fa-search"></i></button>
-                        <input type="search" placeholder="Cerca o inizia una nuova chat" >
+                        <input type="search" v-model="searchContact" placeholder="Cerca o inizia una nuova chat" >
                     </form>  
                     
                     <div id="info_contacts">
                         <ul class="none"> 
-                            <li class="contact flex middle" :class="(i == currentContact) ? 'active' : null " v-for= '(contact, i) in contacts' @click='selected(i)'>
+                            <li class="contact flex middle" :class="(i == currentContact) ? 'active' : null " v-for= '(contact, i) in filterSearch()' @click='selected(i)'>
                                 <div class="avatar_image">
                                     <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="avatar contact">
                                 </div>

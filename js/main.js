@@ -110,7 +110,9 @@ const app = new Vue ({
         currentContact: 0,
         newMessage: '',
         lastDate: '',
+        searchContact: '',
     },
+    
     methods: { 
 
         selected(i){
@@ -118,13 +120,12 @@ const app = new Vue ({
         },
 
         UserNewMessage(){
-
             let listMessages = this.contacts[this.currentContact].messages;
 
             let messageUser = {
                 date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
                 message: this.newMessage,
-                status: 'recieved',
+                status: 'sent',
             }
 
             if (this.newMessage != '') {
@@ -137,17 +138,15 @@ const app = new Vue ({
         },
 
         messageReceived(){
-
             let listMessages = this.contacts[this.currentContact].messages;
 
             let newMessageReceived = {
                 date:  dayjs().format('DD/MM/YYYY hh:mm:ss'),
                 message: 'ok',
-                status: 'sent'
+                status: 'received'
             }
 
             listMessages.push(newMessageReceived);
-            
         },
 
         ScrollTop(){
@@ -155,8 +154,13 @@ const app = new Vue ({
             tmp.scrollTop = tmp.scrollHeight - tmp.clientHeight
         },
 
-       
+        filterSearch() {
+            return this.contacts.filter( contact => {
+            return !this.searchContact || contact.name.toLowerCase().indexOf(this.searchContact.toLowerCase()) > -1
+            })
+        }
     }
+    
 
 })
 

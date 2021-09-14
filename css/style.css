@@ -234,11 +234,11 @@ body {
     display: inline;
 }
 
-.messageSent {
+.messageReceived {
     background-color: #FFFFFF;
     border-radius: 0 15px 15px 15px;
 }
-.messageReceived {
+.messageSent {
     align-self: end;
     background-color: #DCF8C6;
     border-radius: 15px 0 15px 15px;
