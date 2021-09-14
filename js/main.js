@@ -6,6 +6,13 @@
 // Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare
 // nome e immagine di ogni contatto
 
+// Milestone 2
+
+// ● Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i
+// messaggi relativi al contatto attivo all’interno del pannello della conversazione
+
+// ● Click sul contatto mostra la conversazione del contatto cliccato
+
 Vue.config.devtools = true;
 
 const app = new Vue ({
@@ -16,9 +23,6 @@ const app = new Vue ({
             surname: "De Marchi",
             userAvatar: "_io",
         },
-        currentContact: 0,
-        selectedContact: 'Michele',
-        selectedAvatar: '_1',
         contacts: [
             {
                 name: 'Michele',
@@ -64,6 +68,7 @@ const app = new Vue ({
                 ],
             },
             {
+                
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
@@ -88,11 +93,12 @@ const app = new Vue ({
                 name: 'Luisa',
                 avatar: '_4',
                 visible: true,
-                messages: [{
-                    date: '10/01/2020 15:30:55',
-                    message: 'Lo sai che ha aperto una nuova pizzeria?',
-                    status: 'sent'
-                },
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Lo sai che ha aperto una nuova pizzeria?',
+                        status: 'sent'
+                    },
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'Si, ma preferirei andare al cinema',
@@ -100,16 +106,58 @@ const app = new Vue ({
                     }
                 ],
             },
-        ]
+        ],
+        currentContact: 0,
+        newMessage: '',
+        lastDate: '',
     },
-    methods: {   
+    methods: { 
+
         selected(i){
-            this.selectedContact = this.contacts[i].name;
-            this.selectedAvatar = this.contacts[i].avatar;
             this.currentContact = i;
         },
+
+        UserNewMessage(){
+
+            let listMessages = this.contacts[this.currentContact].messages;
+
+            let messageUser = {
+                date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
+                message: this.newMessage,
+                status: 'recieved',
+            }
+
+            if (this.newMessage != '') {
+                listMessages.push(messageUser);
+                this.newMessage = "";
+            }
+
+            setInterval(this.ScrollTop);
+            setTimeout(this.messageReceived, 1000);
+        },
+
+        messageReceived(){
+
+            let listMessages = this.contacts[this.currentContact].messages;
+
+            let newMessageReceived = {
+                date:  dayjs().format('DD/MM/YYYY hh:mm:ss'),
+                message: 'ok',
+                status: 'sent'
+            }
+
+            listMessages.push(newMessageReceived);
+            
+        },
+
+        ScrollTop(){
+            let tmp = document.getElementById("chat_window");
+            tmp.scrollTop = tmp.scrollHeight - tmp.clientHeight
+        },
+
+       
     }
 
-});
+})
 
 
