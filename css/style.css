@@ -180,11 +180,11 @@ body {
 }
 
 #info_float #info_contacts .contact:hover {
-    background-color: rgb(235, 235, 235);
+    background-color: #F5F5F5;
 }
 
 .active {
-    background-color: rgb(175, 174, 174);
+    background-color: #EBEBEB;
 }
 
 #info_float #info_contacts .contact .avatar_image {
@@ -199,6 +199,12 @@ body {
     border-radius: 50%;
 }
 
+#info_float #info_contacts .contact .last_date {
+    color: grey;
+    font-size: 0.6em;
+    align-self: flex-end;
+}
+
 #chat_float {
     width: 60%;
     height: 100%;
@@ -210,10 +216,9 @@ body {
     background-color: #EDEDED;
 }
 
-#chat_float #info_chat #contact_avatar_current {
-    width: 50px;
-    height: 50px;
-    margin-right: 5px;
+#chat_float #info_chat #contact_avatar_current .user-name .last_date {
+    color: grey;
+    font-size: 0.7em;
 }
 
 #chat_float #chat_window {
@@ -228,10 +233,10 @@ body {
 }
 
 #chat_float #chat_window #boxMessage {
+    position: relative;
     max-width: 40%;
-    padding: 10px;
+    padding: 8px;
     margin: 5px;
-    display: inline;
 }
 
 .messageReceived {
@@ -244,11 +249,37 @@ body {
     border-radius: 15px 0 15px 15px;
 }
 
-#chat_float #chat_window #boxMessage .dateMessage {
+#chat_float #chat_window #boxMessage #contentMessage #dateMessage {
+    align-self: end;
     color: grey;
     font-size: 0.6em;
     margin-top: 3px;
 }
+
+#chat_float #chat_window #boxMessage #contentMessage i {
+    padding-left: 5px;
+}
+
+#options-message {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #F5F5F5;
+    z-index: 2; 
+    border-radius: 10px;
+    display:none;
+}
+
+#options-message ul li {
+    padding: 5px;
+    cursor: pointer; 
+}
+
+#options-message ul li:hover {
+    background-color: #EBEBEB;
+    border-radius: 10px;
+}
+
 
 #chat_float #input_user_chat {
     width: 100%;

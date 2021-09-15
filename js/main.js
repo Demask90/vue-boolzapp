@@ -63,7 +63,7 @@ const app = new Vue ({
                 {
                     date: '20/03/2020 16:35:00',
                     message: 'Mi piacerebbe ma devo andare a fare la spesa.',
-                    status: 'received'
+                    status: 'sent'
                 }
                 ],
             },
@@ -106,19 +106,32 @@ const app = new Vue ({
                     }
                 ],
             },
+           
         ],
         currentContact: 0,
         newMessage: '',
-        lastDate: '',
+        lastDateContact: '',
         searchContact: '',
     },
     
     methods: { 
 
         selected(i){
-            this.currentContact = i;
+            return this.currentContact = i;
         },
 
+        lastDateContactCurrent(){
+
+            let contactMessages = this.contacts[this.currentContact].messages;
+
+            if (contactMessages[parseInt(contactMessages.length - 1)].status == "received")
+            contactLastAccess = contactMessages[parseInt(contactMessages.length - 1)].date;
+
+            else contactLastAccess = contactMessages[parseInt(contactMessages.length - 2)].date;
+        
+            return this.lastDateContact = contactLastAccess;
+        },
+        
         UserNewMessage(){
             let listMessages = this.contacts[this.currentContact].messages;
 
@@ -130,11 +143,11 @@ const app = new Vue ({
 
             if (this.newMessage != '') {
                 listMessages.push(messageUser);
-                this.newMessage = "";
+                this.newMessage = '';
             }
 
             setInterval(this.ScrollTop);
-            setTimeout(this.messageReceived, 1000);
+            setTimeout(this.messageReceived, 4000);
         },
 
         messageReceived(){
@@ -151,15 +164,16 @@ const app = new Vue ({
 
         ScrollTop(){
             let tmp = document.getElementById("chat_window");
-            tmp.scrollTop = tmp.scrollHeight - tmp.clientHeight
+            tmp.scrollTop = tmp.scrollHeight;
         },
 
         filterSearch() {
             return this.contacts.filter( contact => {
             return !this.searchContact || contact.name.toLowerCase().indexOf(this.searchContact.toLowerCase()) > -1
             })
-        }
-    }
+        },
+        
+    },
     
 
 })

@@ -81,10 +81,15 @@
                             <div class="avatar_image">
                                 <img :src="'img/avatar' + contacts[currentContact].avatar + '.jpg'" alt="avatar contact current">
                             </div>
-                            <p class="user-name">{{ contacts[currentContact].name }}</p>
+                            <div class="user-name flex-col">
+                                {{ contacts[currentContact].name }}
+                                <div class="last_date">
+                                    Ultimo accesso: {{lastDateContactCurrent()}}
+                                </div>
+                            </div>
+                            
                         </div>
                         
-    
                         <form id="option_chat" class="flex middle around">
                             <button><i class="fas fa-search"></i></button>
                             <button><i class="fas fa-paperclip"></i></button>
@@ -95,10 +100,23 @@
     
                     <div id="chat_window">
                         <ul class="flex-col none">
-                            <li id="boxMessage" :class="(message.status == 'sent') ? 'messageSent' : 'messageReceived'" v-for='message in contacts[currentContact].messages'>
-                                {{ message.message }} 
-                                <div class="dateMessage">
-                                    {{message.date}}
+                            <li id="boxMessage" class="flex-col between" :class="(message.status == 'sent') ? 'messageSent' : 'messageReceived'" v-for='message in contacts[currentContact].messages'>
+                                <div id="contentMessage" class= "flex between">
+                                    <div>
+                                        {{message.message}}
+                                        <div id="dateMessage">
+                                            {{message.date}}
+                                        </div>
+                                    </div>
+                                    <i class="fas fa-chevron-down" @click=></i>
+                                </div>
+                                
+                                <div id="options-message">
+                                    <ul class="none">
+                                        <li>Inoltra</li>
+                                        <li @click="deleteMessage(messaggio, index)" >Elimina</li>
+                                        <li>Informazioni</li>
+                                    </ul>
                                 </div>
                             </li>
                         </ul>
@@ -123,9 +141,7 @@
             </div>
     
         </div>
-        </div>
-
-        
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="./js/main.js"></script>
